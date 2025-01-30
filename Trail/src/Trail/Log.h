@@ -3,7 +3,7 @@
 #include <memory>
 #include "Core.h"
 #include "spdlog/spdlog.h"
-
+#include <spdlog/fmt/ostr.h>
 
 namespace Trail {
 	class TRL_API Log

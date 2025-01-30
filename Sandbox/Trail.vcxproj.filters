@@ -6,29 +6,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Trail.h" />
-    <ClInclude Include="src\Trail\Application.h">
+    <ClInclude Include="..\Trail\src\Trail.h" />
+    <ClInclude Include="..\Trail\src\Trail\Application.h">
       <Filter>Trail</Filter>
     </ClInclude>
-    <ClInclude Include="src\Trail\Core.h">
+    <ClInclude Include="..\Trail\src\Trail\Core.h">
       <Filter>Trail</Filter>
     </ClInclude>
-    <ClInclude Include="src\Trail\EntryPoint.h">
+    <ClInclude Include="..\Trail\src\Trail\EntryPoint.h">
       <Filter>Trail</Filter>
     </ClInclude>
-    <ClInclude Include="src\Trail\Log.h">
+    <ClInclude Include="..\Trail\src\Trail\Log.h">
       <Filter>Trail</Filter>
     </ClInclude>
-    <ClInclude Include="src\Trail\Events\Event.h" />
-    <ClInclude Include="src\Trail\Events\MouseEvent.h" />
-    <ClInclude Include="src\Trail\Events\KeyEvent.h" />
-    <ClInclude Include="src\Trail\Events\ApplicationEvent.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Trail\Application.cpp">
+    <ClCompile Include="..\Trail\src\Trail\Application.cpp">
       <Filter>Trail</Filter>
     </ClCompile>
-    <ClCompile Include="src\Trail\Log.cpp">
+    <ClCompile Include="..\Trail\src\Trail\Log.cpp">
       <Filter>Trail</Filter>
     </ClCompile>
   </ItemGroup>
