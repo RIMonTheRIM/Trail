@@ -4,6 +4,9 @@
     <Filter Include="Trail">
       <UniqueIdentifier>{41382F0E-AD4C-57BF-76CE-FA1EE2A153F0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Trail\Events">
+      <UniqueIdentifier>{05F10C92-F153-9C36-9AD9-D4EC861B68B9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Trail.h" />
@@ -16,13 +19,24 @@
     <ClInclude Include="src\Trail\EntryPoint.h">
       <Filter>Trail</Filter>
     </ClInclude>
+    <ClInclude Include="src\Trail\Events\ApplicationEvent.h">
+      <Filter>Trail\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Trail\Events\Event.h">
+      <Filter>Trail\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Trail\Events\KeyEvent.h">
+      <Filter>Trail\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Trail\Events\MouseEvent.h">
+      <Filter>Trail\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Trail\Log.h">
       <Filter>Trail</Filter>
     </ClInclude>
-    <ClInclude Include="src\Trail\Events\Event.h" />
-    <ClInclude Include="src\Trail\Events\MouseEvent.h" />
-    <ClInclude Include="src\Trail\Events\KeyEvent.h" />
-    <ClInclude Include="src\Trail\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\trlpch.h" />
+    <ClInclude Include="src\Trail\Window.h" />
+    <ClInclude Include="WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Trail\Application.cpp">
@@ -31,5 +45,7 @@
     <ClCompile Include="src\Trail\Log.cpp">
       <Filter>Trail</Filter>
     </ClCompile>
+    <ClCompile Include="src\trlpch.cpp" />
+    <ClCompile Include="WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

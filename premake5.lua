@@ -1,6 +1,6 @@
 workspace "Trail"
 	architecture "x64"
-	startupproject "Sandbox"
+	startproject  "Sandbox"
 	buildoptions "/utf-8"
 	
 	configurations
@@ -10,6 +10,12 @@ workspace "Trail"
 
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+--Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Trail/vendor/GLFW/include"
+
+include "Trail/vendor/GLFW"
+
 project "Trail"
 	location "Trail"
 	kind "SharedLib"
@@ -18,6 +24,10 @@ project "Trail"
 	targetdir("bin/" ..outputDir.. "%{prj.name}")
 	objdir("bin-int/" ..outputDir.. "%{prj.name}")
 
+
+	pchheader "trlpch.h"
+	pchsource "Trail/src/trlpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -25,8 +35,14 @@ project "Trail"
 	}
 	includedirs
 	{
-		"%{prj.name}/src"
-		"%{prj.name}/vendor/spdlog/include;"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -40,7 +56,8 @@ project "Trail"
 			"TRL_BUILD_DLL"
 		}
 
-		postbuildcommands{
+		postbuildcommands
+		{
 			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputDir .. "Sandbox/\"")
 		}
 	filter "configurations:Debug"
