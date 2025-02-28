@@ -1,14 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Trail">
       <UniqueIdentifier>{41382F0E-AD4C-57BF-76CE-FA1EE2A153F0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Trail\Events">
       <UniqueIdentifier>{05F10C92-F153-9C36-9AD9-D4EC861B68B9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Trail\ImGui">
+      <UniqueIdentifier>{2B1A4B71-97CF-C366-20C4-BD3D8C78BA6A}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Trail.h" />
     <ClInclude Include="src\Trail\Application.h">
       <Filter>Trail</Filter>
@@ -31,21 +43,44 @@
     <ClInclude Include="src\Trail\Events\MouseEvent.h">
       <Filter>Trail\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Trail\ImGui\ImGuiLayer.h">
+      <Filter>Trail\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Trail\Layer.h">
+      <Filter>Trail</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Trail\LayerStack.h">
+      <Filter>Trail</Filter>
+    </ClInclude>
     <ClInclude Include="src\Trail\Log.h">
       <Filter>Trail</Filter>
     </ClInclude>
+    <ClInclude Include="src\Trail\Window.h">
+      <Filter>Trail</Filter>
+    </ClInclude>
     <ClInclude Include="src\trlpch.h" />
-    <ClInclude Include="src\Trail\Window.h" />
-    <ClInclude Include="WindowsWindow.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Trail\Application.cpp">
+      <Filter>Trail</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Trail\ImGui\ImGuiLayer.cpp">
+      <Filter>Trail\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Trail\Layer.cpp">
+      <Filter>Trail</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Trail\LayerStack.cpp">
       <Filter>Trail</Filter>
     </ClCompile>
     <ClCompile Include="src\Trail\Log.cpp">
       <Filter>Trail</Filter>
     </ClCompile>
     <ClCompile Include="src\trlpch.cpp" />
-    <ClCompile Include="WindowsWindow.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
   </ItemGroup>
 </Project>

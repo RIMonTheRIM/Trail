@@ -3,8 +3,7 @@
 #include <memory>
 #include "Core.h"
 #include "spdlog/spdlog.h"
-#include <spdlog/fmt/ostr.h>
-
+#include <spdlog/fmt/fmt.h> // Ensure this is included
 namespace Trail {
 	class TRL_API Log
 	{
@@ -18,6 +17,7 @@ namespace Trail {
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
 	};
 }
+
 
 //CORE LOG MACROS 
 //scope resolution operator is put in front to make the compiler always search for Trail namespace from the globals scope and not any other nested namespace

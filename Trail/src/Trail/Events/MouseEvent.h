@@ -9,7 +9,7 @@ namespace Trail {
 		inline float GetX() {return m_MouseX;}
 		inline float GetY() {return m_MouseY;}
 
-		std::string ToString() const override {
+		std::string GetString() const override {
 			std::stringstream ss;
 			ss << "MouseMovedEvent: " << m_MouseX << ", " << m_MouseY;
 			return ss.str();
@@ -29,12 +29,12 @@ namespace Trail {
 		inline float GetYOffset() { return m_YOffset; }
 
 
-		std::string ToString() const override {
+		std::string GetString() const override {
 			std::stringstream ss;
 			ss << "MouseScrolledEvent: " << m_XOffset << ", " << m_YOffset;
 			return ss.str();
 		}
-		
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 		EVENT_CLASS_TYPE(MouseScrolled)
 	private:
 		float m_XOffset, m_YOffset;
@@ -54,7 +54,7 @@ namespace Trail {
 	public: 
 		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
 
-		std::string ToString() const override {
+		std::string GetString() const override {
 			std::stringstream ss;
 			ss << "MouseButtonPressedEvent: " << m_Button;
 			return ss.str();
@@ -65,7 +65,7 @@ namespace Trail {
 	public:
 		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}
 
-		std::string ToString() const override {
+		std::string GetString() const override {
 			std::stringstream ss;
 			ss << "MouseButtonReleasedEvent: " << m_Button;
 			return ss.str();

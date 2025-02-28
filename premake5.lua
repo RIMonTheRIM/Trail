@@ -13,8 +13,13 @@ outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 --Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Trail/vendor/GLFW/include"
+IncludeDir["Glad"] = "Trail/vendor/Glad/include"
+IncludeDir["ImGui"] = "Trail/vendor/imgui"
 
 include "Trail/vendor/GLFW"
+include "Trail/vendor/Glad"
+include "Trail/vendor/imgui"
+
 
 project "Trail"
 	location "Trail"
@@ -37,12 +42,16 @@ project "Trail"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links{
 		"GLFW",
-		"opengl32.lib"
+		"Glad",
+		"opengl32.lib",
+		"ImGui"
 	}
 
 	filter "system:windows"
@@ -53,7 +62,8 @@ project "Trail"
 		defines
 		{
 			"TRL_PLATFORM_WINDOWS",
-			"TRL_BUILD_DLL"
+			"TRL_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -62,14 +72,20 @@ project "Trail"
 		}
 	filter "configurations:Debug"
 		defines "TRL_DEBUG"
+		staticruntime "off"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TRL_RELEASE"
+		staticruntime "off"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TRL_DIST"
+		staticruntime "off"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"

@@ -21,7 +21,7 @@ namespace Trail {
 		KeyPressedEvent(int keycode, int repeatcount) : KeyEvent(keycode), m_RepeatCount(repeatcount) {}
 		inline int GetRepeatCount() const { return m_RepeatCount; }
 
-		std::string ToString() const override {
+		std::string GetString() const override {
 			std::stringstream ss;
 			ss << "KeyPressedEvent: " << m_Keycode << " (" << m_RepeatCount << " repeats";
 			return ss.str();
@@ -36,11 +36,23 @@ namespace Trail {
 	class TRL_API KeyReleasedEvent : public KeyEvent {
 	public:
 		KeyReleasedEvent(int keycode) : KeyEvent(keycode){}
-		std::string ToString() const override {
+		std::string GetString() const override {
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << m_Keycode; //search about stringstreams
+			ss << "KeyReleasedEvent: " << m_Keycode; //search about stringstreams
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(KeyReleased)
+	};
+	class TRL_API KeyTypedEvent : public KeyEvent {
+	public:
+		KeyTypedEvent(int keycode) : KeyEvent(keycode){}
+
+		std::string GetString() const override {
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_Keycode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
 	};
 }

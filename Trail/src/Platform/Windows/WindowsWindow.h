@@ -2,7 +2,6 @@
 #include "Trail/Window.h"
 #include <GLFW/glfw3.h>
 
-
 namespace Trail {
 	class WindowsWindow : public Window
 	{
