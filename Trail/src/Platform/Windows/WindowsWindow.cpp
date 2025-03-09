@@ -142,4 +142,5 @@ namespace Trail {
 	bool WindowsWindow::IsVSync() const {
 		return m_Data.VSync; //return the state of the VSync
 	}
+
 }

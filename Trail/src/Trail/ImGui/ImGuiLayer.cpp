@@ -167,41 +167,57 @@ namespace Trail {
 	}
 	void ImGuiLayer::OnEvent(Event& event) {
 		EventDispatcher dispatcher(event);
-		dispatcher.Dispatch<MouseMovedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnMouseMovedEvent));
-		dispatcher.Dispatch<MouseScrolledEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnMouseScrolledEvent));
-		dispatcher.Dispatch<MouseButtonPressedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonPressedEvent));
-		dispatcher.Dispatch<MouseButtonReleasedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonReleasedEvent));
-		dispatcher.Dispatch<KeyPressedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnKeyPressedEvent));
-		dispatcher.Dispatch<KeyReleasedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnKeyReleasedEvent));
-		dispatcher.Dispatch<WindowResizeEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnWindowResizeEvent));
-        dispatcher.Dispatch<KeyTypedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnKeyTypedEvent));
+        //dispatcher.Dispatch<MouseMovedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnMouseMovedEvent));
+        dispatcher.Dispatch<MouseMovedEvent>([this](MouseMovedEvent& e)-> bool {return ImGuiLayer::OnMouseMovedEvent(e); });
+
+        //dispatcher.Dispatch<MouseScrolledEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnMouseScrolledEvent));
+        dispatcher.Dispatch<MouseScrolledEvent>([this](MouseScrolledEvent& e)-> bool {return ImGuiLayer::OnMouseScrolledEvent(e); });
+
+        //dispatcher.Dispatch<MouseButtonPressedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonPressedEvent));
+        dispatcher.Dispatch<MouseButtonPressedEvent>([this](MouseButtonPressedEvent& e)-> bool {return ImGuiLayer::OnMouseButtonPressedEvent(e); });
+
+        //dispatcher.Dispatch<MouseButtonReleasedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonReleasedEvent));
+        dispatcher.Dispatch<MouseButtonReleasedEvent>([this](MouseButtonReleasedEvent& e)-> bool {return ImGuiLayer::OnMouseButtonReleasedEvent(e); });
+
+        //dispatcher.Dispatch<KeyPressedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnKeyPressedEvent));
+        dispatcher.Dispatch<KeyPressedEvent>([this](KeyPressedEvent& e)-> bool {return ImGuiLayer::OnKeyPressedEvent(e); });
+
+        //dispatcher.Dispatch<KeyReleasedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnKeyReleasedEvent));
+        dispatcher.Dispatch<KeyReleasedEvent>([this](KeyReleasedEvent& e)-> bool {return ImGuiLayer::OnKeyReleasedEvent(e); });
+
+        //dispatcher.Dispatch<WindowResizeEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnWindowResizeEvent));
+        dispatcher.Dispatch<WindowResizeEvent>([this](WindowResizeEvent& e)-> bool {return ImGuiLayer::OnWindowResizeEvent(e); });
+
+        //dispatcher.Dispatch<KeyTypedEvent>(TRL_BIND_EVENT_FN(ImGuiLayer::OnKeyTypedEvent));
+        dispatcher.Dispatch<KeyTypedEvent>([this](KeyTypedEvent& e)-> bool {return ImGuiLayer::OnKeyTypedEvent(e); });
+
 	}
 	bool ImGuiLayer::OnMouseMovedEvent(MouseMovedEvent& event)
 	{
 		ImGuiIO& io = ImGui::GetIO();
         io.AddMousePosEvent(event.GetX(), event.GetY());
-        TRL_TRACE("OnMouseMovedEvent is called ");
+        //TRL_TRACE("OnMouseMovedEvent is called ");
 		return false;
 	}
 	bool ImGuiLayer::OnMouseScrolledEvent(MouseScrolledEvent& event)
 	{
 		ImGuiIO& io = ImGui::GetIO();
         io.AddMouseWheelEvent(event.GetXOffset(), event.GetYOffset());
-        TRL_TRACE("OnMouseScrolledEvent is called ");
+        //TRL_TRACE("OnMouseScrolledEvent is called ");
 		return false;
 	}
 	bool ImGuiLayer::OnMouseButtonPressedEvent(MouseButtonPressedEvent& event)
 	{
 		ImGuiIO& io = ImGui::GetIO();
         io.AddMouseButtonEvent(event.GetMouseButton(), true);
-        TRL_TRACE("OnMouseButtonPressedEvent is called ");
+        //TRL_TRACE("OnMouseButtonPressedEvent is called ");
 		return false;
 	}
 	bool ImGuiLayer::OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& event)
 	{
 		ImGuiIO& io = ImGui::GetIO();
         io.AddMouseButtonEvent(event.GetMouseButton(), false);
-        TRL_TRACE("OnMouseButtonReleasedEvent is called ");
+        //TRL_TRACE("OnMouseButtonReleasedEvent is called ");
 		return false;
 	}
 	bool ImGuiLayer::OnKeyPressedEvent(KeyPressedEvent& event)
@@ -214,7 +230,7 @@ namespace Trail {
         io.KeyShift = ImGui::IsKeyDown(ImGuiKey_RightShift) || ImGui::IsKeyDown(ImGuiKey_LeftShift);
         io.KeyAlt = ImGui::IsKeyDown(ImGuiKey_RightAlt) || ImGui::IsKeyDown(ImGuiKey_LeftAlt);
         io.KeySuper = ImGui::IsKeyDown(ImGuiKey_RightSuper) || ImGui::IsKeyDown(ImGuiKey_LeftSuper);
-        TRL_TRACE("OnKeyPressedEvent is called ");
+        //TRL_TRACE("OnKeyPressedEvent is called ");
 		return false;
 	}
 	bool ImGuiLayer::OnKeyReleasedEvent(KeyReleasedEvent& event)
@@ -222,7 +238,7 @@ namespace Trail {
         ImGuiIO& io = ImGui::GetIO();
         ImGuiKey imgui_key = GetKeyToImGuiKey(event.GetKeyCode());
         io.AddKeyEvent(imgui_key, false);
-        TRL_TRACE("OnKeyReleasedEvent is called ");
+        //TRL_TRACE("OnKeyReleasedEvent is called ");
         return false;
 	}
     bool ImGuiLayer::OnKeyTypedEvent(KeyTypedEvent& event) {
@@ -230,7 +246,7 @@ namespace Trail {
         int keycode = event.GetKeyCode();
         if(keycode > 0 && keycode < 0x10000)
             io.AddInputCharacter((unsigned short)keycode);
-        TRL_TRACE("OnKeyTypedEvent is called but it doesn't work");
+        //TRL_TRACE("OnKeyTypedEvent is called but it doesn't work");
         return false;
     }
 	bool ImGuiLayer::OnWindowResizeEvent(WindowResizeEvent& event)
@@ -239,7 +255,7 @@ namespace Trail {
 		io.DisplaySize = ImVec2(event.GetWidth(), event.GetHeight());
 		io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
 		glViewport(0, 0, event.GetWidth(), event.GetHeight());
-        TRL_TRACE("OnWindowResizeEvent is called");
+        //TRL_TRACE("OnWindowResizeEvent is called");
 		return false;
 	}
 	

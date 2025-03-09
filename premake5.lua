@@ -113,7 +113,7 @@ project "Sandbox"
 	}
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+		staticruntime "off"
 		systemversion "latest"
 
 		defines

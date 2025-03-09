@@ -166,10 +166,14 @@
     <ClInclude Include="src\Trail\Events\KeyEvent.h" />
     <ClInclude Include="src\Trail\Events\MouseEvent.h" />
     <ClInclude Include="src\Trail\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Trail\Input.h" />
+    <ClInclude Include="src\Trail\KeyCodes.h" />
     <ClInclude Include="src\Trail\Layer.h" />
     <ClInclude Include="src\Trail\LayerStack.h" />
     <ClInclude Include="src\Trail\Log.h" />
+    <ClInclude Include="src\Trail\MouseButtonCodes.h" />
     <ClInclude Include="src\Trail\Window.h" />
+    <ClInclude Include="src\Trail\WindowsInput.h" />
     <ClInclude Include="src\trlpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +184,7 @@
     <ClCompile Include="src\Trail\Layer.cpp" />
     <ClCompile Include="src\Trail\LayerStack.cpp" />
     <ClCompile Include="src\Trail\Log.cpp" />
+    <ClCompile Include="src\Trail\WindowsInput.cpp" />
     <ClCompile Include="src\trlpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

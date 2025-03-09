@@ -6,9 +6,12 @@ public:
 
 	}
 	void OnUpdate() override {
+
+		if (Trail::Input::isKeyPressed(TRL_KEY_SPACE))
+			TRL_INFO("SPACE IS PRESSED");
 	}
 	void OnEvent(Trail::Event& event) override {
-		TRL_TRACE("{0}", event.GetName());
+		//TRL_TRACE("{0}", event.GetString());
 	}
 };
 
